@@ -36,7 +36,7 @@
 
 // Define USE_XMC_RELAX_KIT_SD allows to use the SD Lib to communicate with a SD Card over
 // the on-board SD Card Slot
-//#define USE_XMC_RELAX_KIT_SD
+#define USE_XMC_RELAX_KIT_SD
 
 #define SPI_MODE0 0x00
 #define SPI_MODE1 0x01

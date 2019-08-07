@@ -197,7 +197,7 @@ XMC_I2C_t XMC_I2C_0 =
     .protocol_irq_service_request       	  = 5
 };
 
-#elif defined(XMC4700_Relax_Kit)
+#elif defined(XMC4700_Relax_Kit) || defined(XMC4700_LARIX_EDU)
 XMC_I2C_t XMC_I2C_0 =
 {
     .channel          = XMC_I2C1_CH1,

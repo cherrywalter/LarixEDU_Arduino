@@ -43,7 +43,7 @@
 
 #define NUM_ANALOG_INPUTS   22
 #define NUM_PWM             23
-#define NUM_LEDS            2
+#define NUM_LEDS            3
 #define NUM_INTERRUPT       2
 #define NUM_SERIAL          2
 #define NUM_TONE_PINS       16
@@ -108,17 +108,12 @@ static const uint8_t SCK_SD  = PIN_SPI_SCK_SD;
 // ADC G3CH5 on P15.13	button
 
 
-//#define LED_BUILTIN 24  //Standard Arduino LED: Used LED1
-//#define LED1        24  // Additional LED1
-//#define LED2        25  // Additional LED2
-
-#define LED_BUILTIN 2  //Standard Arduino LED: Used LED_D7
-#define LED_D7		2	// On-Board LED_D7
-#define LED_D8		3	// On-Board LED_D8
-#define LED_D9		75	// On-Board LED_D9
-
-//#define BUTTON1     26  // Additional BUTTON1
-//#define BUTTON2     27  // Additional BUTTON2
+#define LED_BUILTIN 2  //Standard Arduino LED: Used LED1
+#define LED1        2  // Additional LED1
+#define LED2        3  // Additional LED2
+#define LED3        4  // Additional LED3
+#define BUTTON1     26  // Additional BUTTON1
+#define BUTTON2     27  // Additional BUTTON2
 #define GND         50  // GND
 
 #define digitalPinToInterrupt(p)    ((p) == 2 ? 0 : ((p) == 3 ? 1 : NOT_AN_INTERRUPT))
@@ -162,15 +157,15 @@ const uint8_t mapping_pin_DAC[][ 2 ] = {
 
 const XMC_PORT_PIN_t mapping_port_pin[] =
 {
-    /* 0  */    {XMC_GPIO_PORT2, 15},   // RX                           P2.15
-    /* 1  */    {XMC_GPIO_PORT2 , 14},  // TX                           P2.14
-    /* 2  */    {XMC_GPIO_PORT1 , 0},   // GPIO / External INT 0        P1.0
-    /* 3  */    {XMC_GPIO_PORT1 , 1},   // PWM40-2 / External INT 1     P1.1
-    /* 4  */    {XMC_GPIO_PORT1 , 8},   // GPIO                         P1.8
-    /* 5  */    {XMC_GPIO_PORT2 , 12},  // PWM81-3 output               P2.12
-    /* 6  */    {XMC_GPIO_PORT2 , 11},  // PWM80-2 output               P2.11
-    /* 7  */    {XMC_GPIO_PORT1 , 9},   // GPIO                         P1.9
-    /* 8  */    {XMC_GPIO_PORT1 , 10},  // GPIO                         P1.10
+    /* 0  */    {XMC_GPIO_PORT2, 15},   // RASPI_GPIO13                 P2.15
+    /* 1  */    {XMC_GPIO_PORT2 , 14},  // RASPI_GPIO19                 P2.14
+    /* 2  */    {XMC_GPIO_PORT1 , 0},   // green LED (LED1)             P1.0
+    /* 3  */    {XMC_GPIO_PORT1 , 1},   // yellow LED (LED2)            P1.1
+    /* 4  */    {XMC_GPIO_PORT1 , 2},   // red LED (LED3)               P1.2
+    /* 5  */    {XMC_GPIO_PORT1 , 8},   // CAN_RxD                      P1.8
+    /* 6  */    {XMC_GPIO_PORT1 , 9},   // CAN_TxD                      P1.9
+    /* 7  */    {XMC_GPIO_PORT1 , 5},   // RASPI_RX                     P1.5
+    /* 8  */    {XMC_GPIO_PORT1 , 4},   // RASPI_TX                     P1.4
     /* 9  */    {XMC_GPIO_PORT1 , 11},  // PWM81-1 output               P1.11
     /* 10  */   {XMC_GPIO_PORT3 , 10},  // SPI-SS / PWM41-0 output      P3.10
     /* 11  */   {XMC_GPIO_PORT3 , 8},   // SPI-MOSI / PWM41-2 output    P3.8
@@ -190,14 +185,14 @@ const XMC_PORT_PIN_t mapping_port_pin[] =
     /* 25  */   {XMC_GPIO_PORT5 , 8},   // Additional LED2              P5.8
     /* 26  */   {XMC_GPIO_PORT15 , 13}, // Additional BUTTON1           P15.13 (INPUT ONLY)
     /* 27  */   {XMC_GPIO_PORT15 , 12}, // Additional BUTTON2           P15.12 (INPUT ONLY)
-    /* 28  */   {XMC_GPIO_PORT4 , 1},   // SPI_SS_3 (SD CARD)           P4.1
-    /* 29  */   {XMC_GPIO_PORT3 , 5},   // SPI-MOSI (SD CARD)           P3.5
-    /* 30  */   {XMC_GPIO_PORT4 , 0},   // SPI-MISO (SD CARD)           P4.0
-    /* 31  */   {XMC_GPIO_PORT3 , 6},   // SPI-SCK  (SD CARD)           P3.6
-    /* 32  */   {XMC_GPIO_PORT1 , 6},   //                              P1.6
-    /* 33  */   {XMC_GPIO_PORT1 , 7},   //                              P1.7
-    /* 34  */   {XMC_GPIO_PORT1 , 4},   // USB Debug RX                 P1.4
-    /* 35  */   {XMC_GPIO_PORT1 , 5},   // USB Debug TX                 P1.5
+    /* 28  */   {XMC_GPIO_PORT4 , 1},   // SD_DAT_3 (SD CARD)           P4.1
+    /* 29  */   {XMC_GPIO_PORT3 , 5},   // SD_CMD   (SD CARD)           P3.5
+    /* 30  */   {XMC_GPIO_PORT4 , 0},   // SD DAT_0 (SD CARD)           P4.0
+    /* 31  */   {XMC_GPIO_PORT3 , 6},   // SD_CLK   (SD CARD)           P3.6
+    /* 32  */   {XMC_GPIO_PORT1 , 6},   // SD_DAT_1 (SD_CARD)           P1.6
+    /* 33  */   {XMC_GPIO_PORT1 , 7},   // SD_DAT_2 (SD_CARD)           P1.7
+    /* 34  */   {XMC_GPIO_PORT1 , 10},  // SD_CD    (SD_CARD)           P1.10
+    /* 35  */   {XMC_GPIO_PORT2 , 11},  // not used                     P2.11
 
 	//Additional pins for port X1 starting here
 	/* 36  */   {XMC_GPIO_PORT3 , 4},   // PWM42-2                      P3.4
@@ -241,7 +236,7 @@ const XMC_PORT_PIN_t mapping_port_pin[] =
 	/* 72  */   {XMC_GPIO_PORT0 , 14}, // PWM40-1                       P0.14
 	/* 73  */   {XMC_GPIO_PORT3 , 14}, //                               P3.14
 	/* 74  */   {XMC_GPIO_PORT0 , 7},  //                               P0.7
-	/* 75  */   {XMC_GPIO_PORT1 , 2},  //                               P1.2
+	/* 75  */   {XMC_GPIO_PORT2 , 12},  //                               P1.2
 	/* 76  */   {XMC_GPIO_PORT6 , 1},  //                               P6.1
 	/* 77  */   {XMC_GPIO_PORT5 , 3},  //                               P5.3
 	/* 78  */   {XMC_GPIO_PORT6 , 5},  // PWM43-0                       P6.5

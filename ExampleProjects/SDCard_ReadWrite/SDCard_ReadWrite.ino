@@ -1,10 +1,9 @@
-
 /*
   SD card read/write for LARIX_EDU_V3 
 
  This example shows how to read and write data to and from an SD card file
  The circuit:
- * SD card attached to SPI bus as follows:
+ * Internal SD card reader attached to SPI bus as follows:
  ** MOSI - pin 29
  ** MISO - pin 30
  ** CLK - pin 31
@@ -49,7 +48,7 @@ void setup() {
   // if the file opened okay, write to it:
   if (myFile) {
     Serial.print("Writing to test.txt...");
-    myFile.println("testing 1, 2, 3.JonaWalter");
+    myFile.println("testing 1, 2, 3");
     // close the file:
     myFile.close();
     Serial.println("done.");

@@ -177,8 +177,8 @@ const XMC_PORT_PIN_t mapping_port_pin[] =
     /* 17  */   {XMC_GPIO_PORT0 , 5 },  // RPI_MISO                     P0.5
     /* 18  */   {XMC_GPIO_PORT0 , 6},   // RPI_CS0                      P0.6
     /* 19  */   {XMC_GPIO_PORT0 , 11},  // RPI_SCLK                     P0.11
-    /* 20  */   {XMC_GPIO_PORT5 , 0},   // RPI_SDA                      P5.0
-    /* 21  */   {XMC_GPIO_PORT5 , 2},   // RPI_SCL                      P5.2
+    /* 20  */   {XMC_GPIO_PORT5 , 0},   // RPI_SDA/DPS422_SDA/IMU_SDA   P5.0
+    /* 21  */   {XMC_GPIO_PORT5 , 2},   // RPI_SCL/DPS422_CL/IMU_SCL    P5.2
     /* 22  */   {XMC_GPIO_PORT2 , 5},   // PWM1                         P2.5
     /* 23  */   {XMC_GPIO_PORT2 , 4},   // PWM2                         P2.4
     /* 24  */   {XMC_GPIO_PORT2 , 3},   // PWM3                         P2.3

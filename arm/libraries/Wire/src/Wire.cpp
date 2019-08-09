@@ -764,7 +764,7 @@ extern "C" {
     }
 #endif
 
-#elif (UC_FAMILY == XMC4)
+#elif ((UC_FAMILY == XMC4) && !defined(XMC4700_LARIX_EDU))
     void USIC1_1_IRQHandler()
     {
         Wire.ReceiveHandler();
@@ -783,6 +783,17 @@ extern "C" {
     void USIC1_4_IRQHandler()
     {
         Wire1.ProtocolHandler();
+    }
+		
+#elif defined(XMC4700_LARIX_EDU)
+    void USIC1_1_IRQHandler()
+    {
+        Wire.ReceiveHandler();
+    }
+
+    void USIC1_2_IRQHandler()
+    {
+        Wire.ProtocolHandler();
     }
 #endif
 } // extern "C" 

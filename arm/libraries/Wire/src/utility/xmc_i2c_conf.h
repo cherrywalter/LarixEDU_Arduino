@@ -70,9 +70,8 @@ extern XMC_I2C_t XMC_I2C_0;
 extern XMC_I2C_t XMC_I2C_1;
 
 #elif defined(XMC4700_LARIX_EDU)
-#define NUM_I2C  2
+#define NUM_I2C  1
 extern XMC_I2C_t XMC_I2C_0;
-extern XMC_I2C_t XMC_I2C_1;
 
 #else
 #error XMC Board not supported

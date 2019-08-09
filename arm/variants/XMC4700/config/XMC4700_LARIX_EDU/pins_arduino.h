@@ -178,7 +178,7 @@ const XMC_PORT_PIN_t mapping_port_pin[] =
     /* 18  */   {XMC_GPIO_PORT0 , 6},   // RPI_CS0                      P0.6
     /* 19  */   {XMC_GPIO_PORT0 , 11},  // RPI_SCLK                     P0.11
     /* 20  */   {XMC_GPIO_PORT5 , 0},   // RPI_SDA/DPS422_SDA/IMU_SDA   P5.0
-    /* 21  */   {XMC_GPIO_PORT5 , 2},   // RPI_SCL/DPS422_CL/IMU_SCL    P5.2
+    /* 21  */   {XMC_GPIO_PORT5 , 2},   // RPI_SCL/DPS422_SCL/IMU_SCL    P5.2
     /* 22  */   {XMC_GPIO_PORT2 , 5},   // PWM1                         P2.5
     /* 23  */   {XMC_GPIO_PORT2 , 4},   // PWM2                         P2.4
     /* 24  */   {XMC_GPIO_PORT2 , 3},   // PWM3                         P2.3
@@ -195,10 +195,10 @@ const XMC_PORT_PIN_t mapping_port_pin[] =
     /* 35  */   {XMC_GPIO_PORT2 , 6},   // DPS_INT                      P2.6
 
 	//Additional pins for port X1 starting here
-	/* 36  */   {XMC_GPIO_PORT3 , 7},   // PWM42-2                      P3.7
+	/* 36  */   {XMC_GPIO_PORT3 , 7},   //                              P3.7
 	/* 37  */   {XMC_GPIO_PORT14 , 0},  //                              P14.0               
 	/* 38  */   {XMC_GPIO_PORT3 , 9},   //                              P3.9
-	/* 39  */   {XMC_GPIO_PORT15 , 12}, // PWM80-1                      P15.12
+	/* 39  */   {XMC_GPIO_PORT15 , 12}, //                              P15.12
 	/* 40  */   {XMC_GPIO_PORT3 , 10},  //                              P3.10
 	/* 41  */   {XMC_GPIO_PORT3 , 2},   //                              P3.2
 	/* 42  */   {XMC_GPIO_PORT3 , 1},   //                              P3.1

@@ -45,14 +45,14 @@ if( serialEvent1 )
 #endif
 }
 
-void USIC0_0_IRQHandler( void )
+void USIC1_0_IRQHandler( void )
 {
 Serial.IrqHandler();
 }
 
 
 #if (NUM_SERIAL > 1)
-void USIC1_0_IRQHandler( void )
+void USIC1_4_IRQHandler( void )
 {
 Serial1.IrqHandler();
 }

@@ -23,12 +23,12 @@ If you have already installed '[DAVE™ - Development Platform for XMC™ Microc
 
 Paste the following URL into the 'Additional Boards Manager URLs' input field under **File** > **Preferences** to add Infineon's microcontroller boards to the Arduino IDE.
 
-https://github.com/cherrywalter/LarixEDU_Arduino/releases/download/v0.2/package_infineon_index.json
+https://github.com/cherrywalter/LarixEDU_Arduino/releases/download/v0.1/package_infineon_index.json
 
 Nicer to copy (no clickable link):
 
 ```
-https://github.com/cherrywalter/LarixEDU_Arduino/releases/download/v0.2/package_infineon_index.json
+https://github.com/cherrywalter/LarixEDU_Arduino/releases/download/v0.1/package_infineon_index.json
 ```
 
 ![Adding a Board JSON](https://github.com/cherrywalter/LarixEDU_Arduino/wiki/pictures/implementation/Preferences_JSON.png)

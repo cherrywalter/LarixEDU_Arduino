@@ -40,37 +40,38 @@ Additionally, please consult the [releases](https://github.com/Infineon/XMC-for-
 
 ### Prework for SEGGER J-Link
 
-In order to use and program the Infineon XMC microcontrollers in the Arduino IDE, [SEGGER J-Link](https://www.segger.com/downloads/jlink) must be installed on your PC. Please follow this link to [SEGGER J-Link](https://www.segger.com/downloads/jlink) and install the J-Link Software and Documentation Pack for your operating system.
-If you have already installed '[DAVE™ - Development Platform for XMC™ Microcontrollers](https://www.infineon.com/cms/de/product/microcontroller/32-bit-industrial-microcontroller-based-on-arm-registered-cortex-registered-m/dave-version-4-free-development-platform-for-code-generation/channel.html?channel=db3a30433580b37101359f8ee6963814)', you can skip this step as the respective drivers/programs are already installed on your system.
+In order to use the Larix EDU V3 and program it, you need [SEGGER J-Link](https://www.segger.com/downloads/jlink) installed on your PC. Please follow this link [SEGGER J-Link](https://www.segger.com/downloads/jlink) and install the J-Link Software and Documentation Pack for your respective operating system (OS).
+If you have already installed '[DAVE™ - Development Platform for XMC™ Microcontrollers](https://infineoncommunity.com/dave-download_ID645)', you might skip this step as you should have the respective drivers on your system.
 
-![J-Link](https://raw.githubusercontent.com/infineon/assets/master/Pictures/J-Link_Packages.png)
+![J-Link](https://github.com/cherrywalter/LarixEDU_Arduino/wiki/pictures/implementation/J-Link_Packages.png)
 
-### Using Arduino IDE
+### Integration in Arduino IDE
 
-![Preferences](https://raw.githubusercontent.com/infineon/assets/master/Pictures/Preferences.png)
+![Preferences](https://github.com/cherrywalter/LarixEDU_Arduino/wiki/pictures/implementation/Preferences.png)
 
 Paste the following URL into the 'Additional Boards Manager URLs' input field under **File** > **Preferences** to add Infineon's microcontroller boards to the Arduino IDE.
 
-https://github.com/Infineon/Assets/releases/download/current/package_infineon_index.json
+https://github.com/cherrywalter/LarixEDU_Arduino/releases/download/v0.1/package_infineon_index.json
 
-Easier to copy (no clickable link):
+Nicer to copy (no clickable link):
 
 ```
-https://github.com/Infineon/Assets/releases/download/current/package_infineon_index.json
+https://github.com/cherrywalter/LarixEDU_Arduino/releases/download/v0.1/package_infineon_index.json
 ```
 
-![Adding a Board JSON](https://raw.githubusercontent.com/infineon/assets/master/Pictures/Preferences_JSON.png)
+![Adding a Board JSON](https://github.com/cherrywalter/LarixEDU_Arduino/wiki/pictures/implementation/Preferences_JSON.png)
 
-To install the boards, please navigate to **Tools** > **Board** > **Boards Manager...** and search for XMC. You will find options to install the board files for the microcontrollers. Click "Install" to add the boards to your Arduino IDE.
+To install the boards, please go now to **Tools** > **Board** > **Boards Manager...** and search for XMC. You will see options to install the board files for the microcontrollers. Click "Install" to add the boards to your Arduino IDE. Beware that it is the version with Larix EDU V3 expansion.
 
-![Infineon Board Entry](https://raw.githubusercontent.com/infineon/assets/master/Pictures/Boards_Manager_Entry.png)
+![XMC board manager](https://github.com/cherrywalter/LarixEDU_Arduino/wiki/pictures/implementation/board_manager.PNG)
 
-In the boards list **Tools** > **Board**, the XMC microcontroller boards are added and can be used from now on.
+In the boards list **Tools** > **Board**, you will now find the XMC microcontroller boards XMC2Go, XMC1100 Boot Kit, XMC4700 Relax Kit and most important XMC4700 Larix EDU V3.
 
-![Board List](https://raw.githubusercontent.com/infineon/assets/master/Pictures/Board_List.png)
+![Board List](https://github.com/cherrywalter/LarixEDU_Arduino/wiki/pictures/implementation/Board_List.PNG)
 
-**Important Notes**
+**IMPORTANT** Use the Debug USB port to flash the Larix EDU V3. The other port does not work.
 
-* This integration will only work for Arduino IDE >=1.5
-* Refer also to the LICENSE.md/txt file for further information
-* Arduino 1.8.0 IDE might have problems with the XMC-for-Arduino releases
+### Different Notes
+
+* **Note: This will only work for Arduino IDE >=1.5**
+* **Note: Refer also to the LICENSE.md/txt file of the repositories for further information**

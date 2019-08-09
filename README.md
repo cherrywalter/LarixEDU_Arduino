@@ -6,7 +6,7 @@ This repository integrates [Infineon's](https://www.infineon.com/) XMC microcont
 
 Please visit also the Wiki for additional information, e.g. datasheets, pin out diagrams, etc.:
 
-[XMC-for-Arduino Wiki](https://github.com/Infineon/XMC-for-Arduino/wiki)
+[XMC-for-Arduino Wiki](https://github.com/cherrywalter/LarixEDU_Arduino/wiki)
 
 ## Installation Instructions
 

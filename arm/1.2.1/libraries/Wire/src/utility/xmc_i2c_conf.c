@@ -197,7 +197,7 @@ XMC_I2C_t XMC_I2C_0 =
     .protocol_irq_service_request       	  = 5
 };
 
-#elif defined(XMC4700_Relax_Kit) || defined(XMC4700_LARIX_EDU)
+#elif defined(XMC4700_Relax_Kit)
 XMC_I2C_t XMC_I2C_0 =
 {
     .channel          = XMC_I2C1_CH1,
@@ -206,16 +206,16 @@ XMC_I2C_t XMC_I2C_0 =
         .address = 0U
     },
     .sda              = {
-        .port = (XMC_GPIO_PORT_t*)PORT3_BASE,
-        .pin  = (uint8_t)15
+        .port = (XMC_GPIO_PORT_t*)PORT0_BASE,
+        .pin  = (uint8_t)13
     },
     .sda_config       = {
         .mode = XMC_GPIO_MODE_OUTPUT_OPEN_DRAIN_ALT2,
         .output_level = XMC_GPIO_OUTPUT_LEVEL_HIGH
     },
     .scl              = {
-        .port = (XMC_GPIO_PORT_t*)PORT0_BASE,
-        .pin  = (uint8_t)13
+        .port = (XMC_GPIO_PORT_t*)PORT3_BASE,
+        .pin  = (uint8_t)15
     },
     .scl_config       = {
         .mode = XMC_GPIO_MODE_OUTPUT_OPEN_DRAIN_ALT2,
@@ -223,6 +223,68 @@ XMC_I2C_t XMC_I2C_0 =
     },
     .input_source_dx0 = XMC_INPUT_A,
     .input_source_dx1 = XMC_INPUT_B,
+    .slave_receive_irq_num                    = (IRQn_Type) 91,
+    .slave_receive_irq_service_request        = 1 ,
+    .protocol_irq_num                		  = (IRQn_Type) 92,
+    .protocol_irq_service_request     		  = 2
+};
+XMC_I2C_t XMC_I2C_1 =
+{
+    .channel          = XMC_I2C1_CH0,
+    .channel_config   = {
+        .baudrate = (uint32_t)(100000U),
+        .address = 0U
+    },
+    .sda              = {
+        .port = (XMC_GPIO_PORT_t*)PORT0_BASE,
+        .pin  = (uint8_t)5
+    },
+    .sda_config       = {
+        .mode = XMC_GPIO_MODE_OUTPUT_OPEN_DRAIN_ALT2,
+        .output_level = XMC_GPIO_OUTPUT_LEVEL_HIGH
+    },
+    .scl              = {
+        .port = (XMC_GPIO_PORT_t*)PORT0_BASE,
+        .pin  = (uint8_t)11
+    },
+    .scl_config       = {
+        .mode = XMC_GPIO_MODE_OUTPUT_OPEN_DRAIN_ALT2,
+        .output_level = XMC_GPIO_OUTPUT_LEVEL_HIGH
+    },
+    .input_source_dx0 = XMC_INPUT_B,
+    .input_source_dx1 = XMC_INPUT_A,
+    .slave_receive_irq_num                    = (IRQn_Type) 93,
+    .slave_receive_irq_service_request        = 3 ,
+    .protocol_irq_num                  		  = (IRQn_Type) 94,
+    .protocol_irq_service_request     		  = 4
+};
+
+#elif defined(XMC4700_LARIX_EDU)
+XMC_I2C_t XMC_I2C_0 =
+{
+    .channel          = XMC_I2C2_CH0,
+    .channel_config   = {
+        .baudrate = (uint32_t)(100000U),
+        .address = 0U
+    },
+    .sda              = {
+        .port = (XMC_GPIO_PORT_t*)PORT5_BASE,
+        .pin  = (uint8_t)0
+    },
+    .sda_config       = {
+        .mode = XMC_GPIO_MODE_OUTPUT_OPEN_DRAIN_ALT1,
+        .output_level = XMC_GPIO_OUTPUT_LEVEL_HIGH
+    },
+    .scl              = {
+        .port = (XMC_GPIO_PORT_t*)PORT5_BASE,
+        .pin  = (uint8_t)2
+    },
+    .scl_config       = {
+        .mode = XMC_GPIO_MODE_OUTPUT_OPEN_DRAIN_ALT1,
+        .output_level = XMC_GPIO_OUTPUT_LEVEL_HIGH
+    },
+    .input_source_dx0 = XMC_INPUT_B,
+    .input_source_dx1 = XMC_INPUT_A,
     .slave_receive_irq_num                    = (IRQn_Type) 91,
     .slave_receive_irq_service_request        = 1 ,
     .protocol_irq_num                		  = (IRQn_Type) 92,

@@ -64,11 +64,15 @@ extern XMC_I2C_t XMC_I2C_1;
 #define NUM_I2C  1
 extern XMC_I2C_t XMC_I2C_0;
 
-#elif defined(XMC4700_Relax_Kit) || defined(XMC4700_LARIX_EDU)
+#elif defined(XMC4700_Relax_Kit)
 #define NUM_I2C  2
 extern XMC_I2C_t XMC_I2C_0;
 extern XMC_I2C_t XMC_I2C_1;
 
+#elif defined(XMC4700_LARIX_EDU)
+#define NUM_I2C  2
+extern XMC_I2C_t XMC_I2C_0;
+extern XMC_I2C_t XMC_I2C_1;
 
 #else
 #error XMC Board not supported

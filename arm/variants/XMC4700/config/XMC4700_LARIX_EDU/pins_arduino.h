@@ -124,10 +124,10 @@ static const uint8_t SCK_SD  = PIN_SPI_SCK_SD;
    Putting both parts in array means if a PWM4 channel gets reassigned for
    another function later a gap in channel numbers will not mess things up */
 const uint8_t mapping_pin_PWM4[][ 2 ] = {
-                                        { 3, 0 },
-                                        { 10, 1 },
-                                        { 11, 2 },
-                                        { 95, 3 },
+                                        { 22, 0 },
+                                        { 23, 1 },
+                                        { 24, 2 },
+                                        { 25, 3 },
                                         { 72, 4 },
                                         { 96, 5 },
                                         { 63, 6 },
@@ -178,11 +178,11 @@ const XMC_PORT_PIN_t mapping_port_pin[] =
     /* 18  */   {XMC_GPIO_PORT0 , 6},   // RPI_CS0                      P0.6
     /* 19  */   {XMC_GPIO_PORT0 , 11},  // RPI_SCLK                     P0.11
     /* 20  */   {XMC_GPIO_PORT5 , 0},   // RPI_SDA/DPS422_SDA/IMU_SDA   P5.0
-    /* 21  */   {XMC_GPIO_PORT5 , 2},   // RPI_SCL/DPS422_SCL/IMU_SCL    P5.2
-    /* 22  */   {XMC_GPIO_PORT2 , 5},   // PWM1                         P2.5
-    /* 23  */   {XMC_GPIO_PORT2 , 4},   // PWM2                         P2.4
-    /* 24  */   {XMC_GPIO_PORT2 , 3},   // PWM3                         P2.3
-    /* 25  */   {XMC_GPIO_PORT2 , 2},   // PWM4                         P2.2
+    /* 21  */   {XMC_GPIO_PORT5 , 2},   // RPI_SCL/DPS422_SCL/IMU_SCL   P5.2
+    /* 22  */   {XMC_GPIO_PORT2 , 5},   // PWM1 CCU41                   P2.5
+    /* 23  */   {XMC_GPIO_PORT2 , 4},   // PWM2 CCU41                   P2.4
+    /* 24  */   {XMC_GPIO_PORT2 , 3},   // PWM3 CCU41                   P2.3
+    /* 25  */   {XMC_GPIO_PORT2 , 2},   // PWM4 CCU41                   P2.2
     /* 26  */   {XMC_GPIO_PORT0 , 0},   // TX_XMC4200                   P0.0
     /* 27  */   {XMC_GPIO_PORT0 , 1},   // XMC4200_RX                   P0.1
     /* 28  */   {XMC_GPIO_PORT4 , 1},   // SD_DAT_3 (SD CARD)           P4.1
@@ -236,7 +236,7 @@ const XMC_PORT_PIN_t mapping_port_pin[] =
 	/* 72  */   {XMC_GPIO_PORT0 , 14},  // PWM40-1                       P0.14
 	/* 73  */   {XMC_GPIO_PORT3 , 14},  //                               P3.14
 	/* 74  */   {XMC_GPIO_PORT0 , 7},   //                               P0.7
-	/* 75  */   {XMC_GPIO_PORT2 , 12},  //                               P1.2
+	/* 75  */   {XMC_GPIO_PORT2 , 12},  //                               P2.12
 	/* 76  */   {XMC_GPIO_PORT6 , 1},   //                               P6.1
 	/* 77  */   {XMC_GPIO_PORT5 , 3},   //                               P5.3
 	/* 78  */   {XMC_GPIO_PORT6 , 5},   // PWM43-0                       P6.5
@@ -269,9 +269,11 @@ const XMC_PIN_INTERRUPT_t mapping_interrupt[] =
 
 XMC_PWM4_t mapping_pwm4[] =
 {
-    {CCU40, CCU40_CC42, 2, mapping_port_pin[3] , P1_1_AF_CCU40_OUT2 ,  XMC_CCU4_SLICE_PRESCALER_64, PWM4_TIMER_PERIOD, DISABLED}, // PWM disabled   3   P1.1
-    {CCU41, CCU41_CC40, 0, mapping_port_pin[10], P3_10_AF_CCU41_OUT0,  XMC_CCU4_SLICE_PRESCALER_64, PWM4_TIMER_PERIOD, DISABLED}, // PWM disabled   10  P3.10
-    {CCU41, CCU41_CC42, 2, mapping_port_pin[11], P3_8_AF_CCU41_OUT2 ,  XMC_CCU4_SLICE_PRESCALER_64, PWM4_TIMER_PERIOD, DISABLED}, // PWM disabled   11  P3.8
+  {CCU41, CCU41_CC40, 0, mapping_port_pin[22], P2_5_AF_CCU41_OUT0, XMC_CCU4_SLICE_PRESCALER_64, PWM4_TIMER_PERIOD, DISABLED}, // PWM disabled  22  P2.5
+  {CCU41, CCU41_CC41, 1, mapping_port_pin[23], P2_4_AF_CCU41_OUT1, XMC_CCU4_SLICE_PRESCALER_64, PWM4_TIMER_PERIOD, DISABLED}, // PWM disabled  23  P2.4
+  {CCU41, CCU41_CC42, 2, mapping_port_pin[24], P2_3_AF_CCU41_OUT2, XMC_CCU4_SLICE_PRESCALER_64, PWM4_TIMER_PERIOD, DISABLED}, // PWM disabled  24  P2.3
+	{CCU41, CCU41_CC43, 3, mapping_port_pin[25], P2_2_AF_CCU41_OUT3, XMC_CCU4_SLICE_PRESCALER_64, PWM4_TIMER_PERIOD, DISABLED}, // PWM disabled  25  P2.2
+		
 	//additional pwm outputs starting here
 	{CCU40, CCU40_CC40, 0, mapping_port_pin[95] , P0_15_AF_CCU40_OUT0, XMC_CCU4_SLICE_PRESCALER_64, PWM4_TIMER_PERIOD, DISABLED}, // PWM disabled  95  P0.15
 	{CCU40, CCU40_CC41, 1, mapping_port_pin[72] , P0_14_AF_CCU40_OUT1, XMC_CCU4_SLICE_PRESCALER_64, PWM4_TIMER_PERIOD, DISABLED}, // PWM disabled  72  P0.14

@@ -255,7 +255,7 @@ const XMC_PORT_PIN_t mapping_port_pin[] =
 	/* 91  */   {XMC_GPIO_PORT6 , 2},   // PWM43-3                       P6.2
 	/* 92  */   {XMC_GPIO_PORT6 , 0},   //                               P6.0
 	/* 93  */   {XMC_GPIO_PORT0 , 8},   // SPI_3 SCLK                    P0.8
-	/* 94  */   {XMC_GPIO_PORT3 , 3},   //                               P3.3
+	/* 94  */   {XMC_GPIO_PORT1 , 3},   //                               P1.3
 	/* 95  */   {XMC_GPIO_PORT0 , 15},  // PWM40-0                       P0.15
 	/* 96  */   {XMC_GPIO_PORT0 , 12},  // PWM40-3                       P0.12
 	/* 97  */   {XMC_GPIO_PORT3 , 12}   // SPI_2 MISO                    P3.12

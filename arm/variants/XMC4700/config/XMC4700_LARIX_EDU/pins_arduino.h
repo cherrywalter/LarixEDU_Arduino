@@ -116,7 +116,7 @@ static const uint8_t SCK_SD  = PIN_SPI_SCK_SD;
 #define BUTTON2     27  // Additional BUTTON2
 #define GND         50  // GND
 
-#define digitalPinToInterrupt(p)    ((p) == 35 ? 0 : ((p) == 3 ? 1 : NOT_AN_INTERRUPT))
+#define digitalPinToInterrupt(p)    ((p) == 35 ? 0 : NOT_AN_INTERRUPT)
 
 #ifdef ARDUINO_MAIN
 /* Mapping of Arduino Pins to PWM4 channels as pin and PWM4 channel

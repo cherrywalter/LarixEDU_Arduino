@@ -45,34 +45,35 @@ if( serialEvent1 )
 #endif
 }
 
-#if (defined XMC4700_LARIX_EDU)
+#if defined(XMC4700_LARIX_EDU)
 void USIC1_0_IRQHandler( void )
-{
-Serial.IrqHandler();
-}
+	{
+		Serial.IrqHandler();
+	}
 #else
 void USIC0_0_IRQHandler( void )
-{
-Serial.IrqHandler();
-}
+	{
+		Serial.IrqHandler();
+	}
 #endif
 
 
 #if (NUM_SERIAL > 1)
-#if (defined XMC4700_LARIX_EDU)
-void USIC1_4_IRQHandler( void )
-{
-Serial1.IrqHandler();
-}
-#else
-void USIC1_0_IRQHandler( void )
-{
-Serial1.IrqHandler();
-}
+	#if defined (XMC4700_LARIX_EDU)
+		void USIC1_4_IRQHandler( void )
+		{
+			Serial1.IrqHandler();
+		}
+	#else
+		void USIC1_0_IRQHandler( void )
+		{
+			Serial1.IrqHandler();
+		}
+	#endif
 #endif
-
+	
 #ifdef __cplusplus
-}
+	}
 #endif
 
 

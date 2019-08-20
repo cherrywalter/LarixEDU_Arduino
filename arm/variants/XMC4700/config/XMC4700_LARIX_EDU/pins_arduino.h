@@ -116,7 +116,7 @@ static const uint8_t SCK_SD  = PIN_SPI_SCK_SD;
 #define BUTTON2     27  // Additional BUTTON2
 #define GND         50  // GND
 
-#define digitalPinToInterrupt(p)    ((p) == 2 ? 0 : ((p) == 3 ? 1 : NOT_AN_INTERRUPT))
+#define digitalPinToInterrupt(p)    ((p) == 35 ? 0 : ((p) == 3 ? 1 : NOT_AN_INTERRUPT))
 
 #ifdef ARDUINO_MAIN
 /* Mapping of Arduino Pins to PWM4 channels as pin and PWM4 channel
@@ -263,8 +263,7 @@ const XMC_PORT_PIN_t mapping_port_pin[] =
 
 const XMC_PIN_INTERRUPT_t mapping_interrupt[] =
 {
-    /* 0  */    {CCU40, CCU40_CC43, 3, 0, CCU40_IN3_P1_0},
-    /* 1  */    {CCU40, CCU40_CC42, 2, 1, CCU40_IN2_P1_1}
+    /* 0  */    {CCU40, CCU40_CC43, 3, 0, CCU40_IN3_P2_6},
 };
 
 XMC_PWM4_t mapping_pwm4[] =
@@ -311,29 +310,29 @@ XMC_ARD_DAC_t mapping_dac[] =
 XMC_ADC_t mapping_adc[] =
 {
 	//Result reg numbers are now equal to channel numbers
-	{VADC, 0, VADC_G0, 0, 0, DISABLED},
-    {VADC, 1, VADC_G0, 0, 1, DISABLED},
-    {VADC, 2, VADC_G1, 1, 2, DISABLED},
-    {VADC, 3, VADC_G1, 1, 3, DISABLED},
-    {VADC, 0, VADC_G2, 2, 0, DISABLED},
-    {VADC, 1, VADC_G2, 2, 1, DISABLED},
+	{VADC, 0, VADC_G0, 0, 0, DISABLED}, //A0
+    {VADC, 1, VADC_G0, 0, 1, DISABLED},  //A1
+    {VADC, 2, VADC_G1, 1, 2, DISABLED},  //A2
+    {VADC, 3, VADC_G1, 1, 3, DISABLED},  //A3
+    {VADC, 0, VADC_G2, 2, 0, DISABLED},  //A4
+    {VADC, 1, VADC_G2, 2, 1, DISABLED},  //A5
 	//Additional ADC channels starting here
-	{VADC, 6, VADC_G2, 2, 6, DISABLED},
-	{VADC, 5, VADC_G2, 2, 5, DISABLED},
-	{VADC, 3, VADC_G2, 2, 3, DISABLED},
-	{VADC, 7, VADC_G1, 1, 7, DISABLED},
-	{VADC, 5, VADC_G1, 1, 5, DISABLED},
-	{VADC, 7, VADC_G0, 0, 7, DISABLED},
-	{VADC, 7, VADC_G3, 3, 7, DISABLED},
-	{VADC, 1, VADC_G1, 1, 1, DISABLED},
-	{VADC, 0, VADC_G1, 1, 0, DISABLED},
-	{VADC, 6, VADC_G3, 3, 6, DISABLED},
-	{VADC, 6, VADC_G0, 0, 6, DISABLED},
-	{VADC, 4, VADC_G1, 1, 4, DISABLED},
-	{VADC, 6, VADC_G1, 1, 6, DISABLED},
-	{VADC, 2, VADC_G2, 2, 2, DISABLED},
-	{VADC, 4, VADC_G2, 2, 4, DISABLED},
-	{VADC, 7, VADC_G2, 2, 7, DISABLED}
+	{VADC, 6, VADC_G2, 2, 6, DISABLED},  //A6
+	{VADC, 5, VADC_G2, 2, 5, DISABLED},  //A7
+	{VADC, 3, VADC_G2, 2, 3, DISABLED},  //A8
+	{VADC, 7, VADC_G1, 1, 7, DISABLED},  //A9
+	{VADC, 5, VADC_G1, 1, 5, DISABLED},  //A10
+	{VADC, 7, VADC_G0, 0, 7, DISABLED},  //A11
+	{VADC, 7, VADC_G3, 3, 7, DISABLED},  //A12
+	{VADC, 1, VADC_G1, 1, 1, DISABLED},  //A13
+	{VADC, 0, VADC_G1, 1, 0, DISABLED},  //A14
+	{VADC, 6, VADC_G3, 3, 6, DISABLED},  //A15
+	{VADC, 6, VADC_G0, 0, 6, DISABLED},  //A16
+	{VADC, 4, VADC_G1, 1, 4, DISABLED},  //A17
+	{VADC, 6, VADC_G1, 1, 6, DISABLED},  //A18
+	{VADC, 2, VADC_G2, 2, 2, DISABLED},  //A19
+	{VADC, 4, VADC_G2, 2, 4, DISABLED},  //A20
+	{VADC, 7, VADC_G2, 2, 7, DISABLED}   //A20
 };
 
 

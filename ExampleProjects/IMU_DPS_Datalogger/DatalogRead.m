@@ -7,7 +7,7 @@ clc
 IMU_Data = [];
 
 %Open File and convert it so it is possible to use the data in matlab
-Datafile = fopen('F:\IMU.TXT');
+Datafile = fopen('location of your logging file goes here');
 MeasurementData = textscan(Datafile,'%s');
 MeasurementData = MeasurementData{1,1};
 DataSize = size(MeasurementData);

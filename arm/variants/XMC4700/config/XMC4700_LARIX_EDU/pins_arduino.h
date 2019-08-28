@@ -41,7 +41,7 @@
 /* On board LED is ON when digital output is 0, LOW, False, OFF */
 #define  XMC_LED_ON         0
 
-#define NUM_ANALOG_INPUTS   22
+#define NUM_ANALOG_INPUTS   5
 #define NUM_PWM             23
 #define NUM_LEDS            3
 #define NUM_INTERRUPT       2
@@ -79,42 +79,18 @@ static const uint8_t MOSI_SD = PIN_SPI_MOSI_SD;
 static const uint8_t MISO_SD = PIN_SPI_MISO_SD;
 static const uint8_t SCK_SD  = PIN_SPI_SCK_SD;
 
-#define A0   0
-#define A1   1
-#define A2   2
-#define A3   3
-#define A4   4
-#define A5   5
-//Additional ADC ports starting here
-#define A6	 6		// ADC G2CH6 on P15.6
-#define A7	 7		// ADC G2CH5 on P15.5
-#define A8	 8		// ADC G2CH3 on P15.3
-#define A9	 9		// ADC G1CH7 on P14.15
-#define A10	 10		// ADC G1CH5 on P14.13
-#define A11	 11		// ADC G0CH7 on P14.7
-#define A12	 12		// ADC G3CH7 on P15.15
-#define A13	 13		// ADC G1CH1 on P14.9
-#define A14	 14		// ADC G1CH0 on P14.8
-#define A15	 15		// ADC G3CH6 on P15.14
-#define A16	 16		// ADC G0CH6 on P14.6
-#define A17	 17		// ADC G1CH4 on P14.12
-#define A18	 18		// ADC G1CH6 on P14.14
-#define A19	 19		// ADC G2CH2 on P15.2
-#define A20	 20		// ADC G2CH4 on P15.4
-#define A21	 21		// ADC G2CH7 on P15.7
-// ADC G3CH0 on P15.8	not available
-// ADC G3CH1 on P15.9	not available
-// ADC G3CH4 on P15.12	button
-// ADC G3CH5 on P15.13	button
+#define A0   0  // Isense_ESC
+#define A1   1  // Vbat_ESC
+#define A2   2  // Vbat
+#define A3   3  // P14.8
+#define A4   4  // P14.9
 
-
-#define LED_BUILTIN 2  //Standard Arduino LED: Used LED1
-#define LED1        2  // Additional LED1
-#define LED2        3  // Additional LED2
-#define LED3        4  // Additional LED3
-#define BUTTON1     26  // Additional BUTTON1
-#define BUTTON2     27  // Additional BUTTON2
-#define GND         50  // GND
+#define LED_BUILTIN 2   //Standard Arduino LED: Used LED1
+#define LED1        2   // Additional LED1
+#define LED2        3   // Additional LED2
+#define LED3        4   // Additional LED3
+#define GND         50  // needed for serial communication
+#define RPI_ON      15  // Raspi on switch pin
 
 #define digitalPinToInterrupt(p)    ((p) == 35 ? 0 : NOT_AN_INTERRUPT)
 
@@ -172,7 +148,7 @@ const XMC_PORT_PIN_t mapping_port_pin[] =
     /* 12  */   {XMC_GPIO_PORT2 , 14},  // RPI_GPIO19                   P2.14
     /* 13  */   {XMC_GPIO_PORT3 , 3},   // RPI_GPIO24                   P3.3
     /* 14  */   {XMC_GPIO_PORT0 , 3},   // RPI_GPIO25                   P0.3
-    /* 15  */   {XMC_GPIO_PORT0 , 9},   // RPI_on                       P0.9
+    /* 15  */   {XMC_GPIO_PORT0 , 9},   // RPI_ON                       P0.9
     /* 16  */   {XMC_GPIO_PORT0 , 4},   // RPI_MOSI                     P0.4
     /* 17  */   {XMC_GPIO_PORT0 , 5 },  // RPI_MISO                     P0.5
     /* 18  */   {XMC_GPIO_PORT0 , 6},   // RPI_CS0                      P0.6
@@ -258,8 +234,8 @@ const XMC_PORT_PIN_t mapping_port_pin[] =
 	/* 94  */   {XMC_GPIO_PORT1 , 3},   // not connected                  P1.3
 	/* 95  */   {XMC_GPIO_PORT0 , 15},  // not connected                  P0.15
 	/* 96  */   {XMC_GPIO_PORT0 , 12},  // not connected                  P0.12
-	/* 97  */   {XMC_GPIO_PORT3 , 12}   // not connected                  P3.12
-	/* 36  */   {XMC_GPIO_PORT3 , 7},   // not connected                  P3.7
+	/* 97  */   {XMC_GPIO_PORT3 , 12},   // not connected                  P3.12
+	/* 36  */   {XMC_GPIO_PORT3 , 7}   // not connected                  P3.7
 };
 
 const XMC_PIN_INTERRUPT_t mapping_interrupt[] =
@@ -311,29 +287,11 @@ XMC_ARD_DAC_t mapping_dac[] =
 XMC_ADC_t mapping_adc[] =
 {
 	//Result reg numbers are now equal to channel numbers
-	{VADC, 0, VADC_G0, 0, 0, DISABLED}, //A0
-    {VADC, 1, VADC_G0, 0, 1, DISABLED},  //A1
-    {VADC, 2, VADC_G1, 1, 2, DISABLED},  //A2
-    {VADC, 3, VADC_G1, 1, 3, DISABLED},  //A3
-    {VADC, 0, VADC_G2, 2, 0, DISABLED},  //A4
-    {VADC, 1, VADC_G2, 2, 1, DISABLED},  //A5
-	//Additional ADC channels starting here
-	{VADC, 6, VADC_G2, 2, 6, DISABLED},  //A6
-	{VADC, 5, VADC_G2, 2, 5, DISABLED},  //A7
-	{VADC, 3, VADC_G2, 2, 3, DISABLED},  //A8
-	{VADC, 7, VADC_G1, 1, 7, DISABLED},  //A9
-	{VADC, 5, VADC_G1, 1, 5, DISABLED},  //A10
-	{VADC, 7, VADC_G0, 0, 7, DISABLED},  //A11
-	{VADC, 7, VADC_G3, 3, 7, DISABLED},  //A12
-	{VADC, 1, VADC_G1, 1, 1, DISABLED},  //A13
-	{VADC, 0, VADC_G1, 1, 0, DISABLED},  //A14
-	{VADC, 6, VADC_G3, 3, 6, DISABLED},  //A15
-	{VADC, 6, VADC_G0, 0, 6, DISABLED},  //A16
-	{VADC, 4, VADC_G1, 1, 4, DISABLED},  //A17
-	{VADC, 6, VADC_G1, 1, 6, DISABLED},  //A18
-	{VADC, 2, VADC_G2, 2, 2, DISABLED},  //A19
-	{VADC, 4, VADC_G2, 2, 4, DISABLED},  //A20
-	{VADC, 7, VADC_G2, 2, 7, DISABLED}   //A20
+	{VADC, 5, VADC_G0, 0, 5, DISABLED},  //A0
+	{VADC, 6, VADC_G0, 0, 6, DISABLED},  //A1
+	{VADC, 7, VADC_G0, 0, 7, DISABLED},  //A2
+	{VADC, 0, VADC_G1, 1, 0, DISABLED},  //A3
+	{VADC, 1, VADC_G1, 1, 1, DISABLED},  //A4
 };
 
 
